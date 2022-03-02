@@ -1,22 +1,18 @@
 package com.study.board.controller;
 
+import com.study.board.controller.Entity.Board;
 import com.study.board.controller.Service.BoardService;
-import com.study.board.controller.entity.Board;
-import com.study.board.controller.entity.Board;
-import com.study.board.controller.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BoardController {
 
     @Autowired
     BoardService boardService;
-    private BoardService boardService;
 
     @GetMapping("/board/write") // localhost:8090/board/write
     public String boardWriteForm() {
@@ -34,9 +30,12 @@ public class BoardController {
     public String boardList(Model model) {
         model.addAttribute("list", boardService.boardList());
         return "boardlist";
+    }
 
-        boardService.write(board);
+    @GetMapping("/board/view") // localhost:8090/board/view?id=1
+    public String boardView(Model model, Integer id) {
 
-        return "";
+        model.addAttribute("board", boardService.boardView(id));
+        return "boardview";
     }
 }

@@ -1,6 +1,6 @@
-package com.study.board.controller.repository;
+package com.study.board.controller.Repository;
 
-import com.study.board.controller.entity.Board;
+import com.study.board.controller.Entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
